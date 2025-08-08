@@ -1,3 +1,5 @@
+// --- QUICK FIX: force fallback so the app shows planets even if HORIZONS is slow/blocked
+const FORCE_FALLBACK = true;
 export const NASA_API_KEY = 'DEMO_KEY'; // For api.nasa.gov endpoints (not required here)
 export const INCLUDE_PLUTO = false;
 export const AU_IN_KM = 149_597_870.7;
@@ -186,6 +188,27 @@ export function getPlanetTextures() {
  * Returns { data: PlanetRecord[], source: "horizons"|"fallback", fallbackUsed: boolean }
  */
 export async function fetchPlanetaryData(dateObj) {
+  if (FORCE_FALLBACK) {
+    const targets = [
+      "Mercury","Venus","Earth","Mars","Jupiter","Saturn","Uranus","Neptune",
+      ...(INCLUDE_PLUTO ? ["Pluto"] : []),
+    ];
+    const records = FALLBACK_ELEMENTS
+      .filter((el) => targets.includes(el.name))
+      .map((el) => {
+        const phys = PHYSICALS[el.name];
+        const p = el.period_days ?? 365.256 * Math.pow(el.semiMajorAxis_au, 1.5);
+        return {
+          name: el.name,
+          radius_km: phys.radius_km,
+          fallbackColor: phys.color,
+          elements: el,
+          meanOrbitalSpeed_kms: (2 * Math.PI * (el.semiMajorAxis_au * AU_IN_KM)) / (p * 86400),
+        };
+      });
+    return { data: records, source: "fallback", fallbackUsed: true };
+  }
+
   const targets = [
     "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune",
     ...(INCLUDE_PLUTO ? ["Pluto"] : []),
