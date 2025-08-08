@@ -97,14 +97,27 @@ let selectedPlanet = null;
 updateSpeedLabel();
 
 /** ---------- Init: fetch NASA data then build scene ---------- */
-(async function init() {
-  const { data, source, fallbackUsed } = await fetchPlanetaryData(new Date());
+((async function init() {
+  // מתחילים רינדור מיד כדי שתראה את השמש גם אם ה-API איטי
+  animate();
+
+  let pack;
+  try {
+    // אם ה-API לא עונה תוך 4 שניות – נזרוק timeout ונשתמש בפולבאק
+    pack = await Promise.race([
+      fetchPlanetaryData(new Date()),
+      new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 4000)),
+    ]);
+  } catch {
+    // ניסיון נוסף – הפונקציה כבר יודעת ליפול לפולבאק
+    pack = await fetchPlanetaryData(new Date());
+  }
+
+  const { data, source, fallbackUsed } = pack;
   planetaryDataSource = source;
   setSourceLabel(source);
   banner.classList.toggle("hidden", !fallbackUsed);
-
   buildPlanets(data);
-  animate();
 })();
 
 /** ---------- Build planet meshes & orbits ---------- */
