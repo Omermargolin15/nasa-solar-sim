@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>NASA-Powered 3D Solar System Simulator</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Interactive 3D Solar System using Three.js and NASA data." />
+</head>
+<body>
+  <div id="app">
+    <div id="control-panel" class="panel">
+      <div class="row">
+        <button id="toggleOrbitsBtn" class="btn">Toggle Orbits</button>
+        <button id="speedDownBtn" class="btn">Speed −</button>
+        <button id="speedUpBtn" class="btn">Speed +</button>
+      </div>
+      <div class="row">
+        <input id="dateInput" type="date" class="input" />
+        <button id="todayBtn" class="btn">Today</button>
+        <button id="resetViewBtn" class="btn">Reset View</button>
+      </div>
+      <div class="row">
+        <span id="speedLabel" class="badge">1 day = 2 sec</span>
+        <span id="sourceLabel" class="badge badge-secondary" title="Where the data came from">Source: —</span>
+      </div>
+    </div>
+
+    <div id="info-card" class="info-card hidden">
+      <div class="info-header">
+        <h3 id="info-name">—</h3>
+        <button id="info-close" class="icon-btn" aria-label="Close">&times;</button>
+      </div>
+      <div class="info-body">
+        <div class="info-row"><span>Radius</span><span id="info-radius">—</span></div>
+        <div class="info-row"><span>Orbital speed</span><span id="info-speed">—</span></div>
+        <div class="info-row"><span>Distance from Sun</span><span id="info-distance">—</span></div>
+        <div class="info-row"><span>True anomaly</span><span id="info-anomaly">—</span></div>
+        <div class="info-row"><span>Orbit period</span><span id="info-period">—</span></div>
+      </div>
+    </div>
+
+    <div id="api-banner" class="banner hidden">
+      NASA HORIZONS unavailable — running with offline fallback data.
+      <button id="retryBtn" class="btn btn-small">Retry</button>
+    </div>
+
+    <div id="canvas-container"></div>
+  </div>
+
+  <!-- Three.js modules from CDN -->
+  <script type="module">
+    import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
+    import "https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js";
+  </script>
+
+  <!-- App modules -->
+  <script type="module" src="nasa_api.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

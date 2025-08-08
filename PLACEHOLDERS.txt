@@ -1,0 +1,49 @@
+# assets/planet_textures/ (list of placeholder filenames + source URLs)
+
+sun.jpg — (Not used by default; Sun uses emissive material)
+  Suggested source: SDO imagery, e.g., https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001364/GSFC_20171208_Archive_e001364~large.jpg
+
+mercury_low.jpg
+  https://images-assets.nasa.gov/image/PIA19216/PIA19216~small.jpg
+mercury_high.jpg
+  https://images-assets.nasa.gov/image/PIA19216/PIA19216~orig.jpg
+
+venus_low.jpg
+  https://images-assets.nasa.gov/image/PIA00159/PIA00159~small.jpg
+venus_high.jpg
+  https://images-assets.nasa.gov/image/PIA00159/PIA00159~orig.jpg
+
+earth_low.jpg
+  https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73909/world.topo.bathy.200407.3x5400x2700.jpg
+earth_high.jpg
+  https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73909/world.topo.bathy.200407.3x5400x2700.jpg
+
+mars_low.jpg
+  https://images-assets.nasa.gov/image/PIA00407/PIA00407~small.jpg
+mars_high.jpg
+  https://images-assets.nasa.gov/image/PIA00407/PIA00407~orig.jpg
+
+jupiter_low.jpg
+  https://images-assets.nasa.gov/image/PIA22946/PIA22946~small.jpg
+jupiter_high.jpg
+  https://images-assets.nasa.gov/image/PIA22946/PIA22946~orig.jpg
+
+saturn_low.jpg
+  https://images-assets.nasa.gov/image/PIA21046/PIA21046~small.jpg
+saturn_high.jpg
+  https://images-assets.nasa.gov/image/PIA21046/PIA21046~orig.jpg
+
+uranus_low.jpg
+  https://images-assets.nasa.gov/image/PIA18182/PIA18182~small.jpg
+uranus_high.jpg
+  https://images-assets.nasa.gov/image/PIA18182/PIA18182~orig.jpg
+
+neptune_low.jpg
+  https://images-assets.nasa.gov/image/PIA01492/PIA01492~small.jpg
+neptune_high.jpg
+  https://images-assets.nasa.gov/image/PIA01492/PIA01492~orig.jpg
+
+pluto_low.jpg
+  https://images-assets.nasa.gov/image/PIA19952/PIA19952~small.jpg
+pluto_high.jpg
+  https://images-assets.nasa.gov/image/PIA19952/PIA19952~orig.jpg
